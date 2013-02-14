@@ -415,3 +415,4 @@ stress
 289 aio dangerous ioctl rw stress
 290 aio dangerous ioctl rw stress
 291 aio dangerous ioctl rw stress
+292 dangerous enospc rw stress
