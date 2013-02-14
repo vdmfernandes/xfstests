@@ -411,3 +411,7 @@ stress
 285 auto dump quota quick
 286 auto rw enospc aio stress
 287 auto rw enospc aio prealloc stress
+288 aio dangerous ioctl rw stress
+289 aio dangerous ioctl rw stress
+290 aio dangerous ioctl rw stress
+291 aio dangerous ioctl rw stress
