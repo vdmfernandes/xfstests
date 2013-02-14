@@ -410,3 +410,4 @@ stress
 284 auto
 285 auto dump quota quick
 286 auto rw enospc aio stress
+287 auto rw enospc aio prealloc stress
