@@ -421,3 +421,4 @@ stress
 295 auto logprint quick
 296 dump auto quick
 297 auto aio enospc rw stress
+298 auto aio enospc preallocrw stress
