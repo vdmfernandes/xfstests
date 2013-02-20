@@ -1841,6 +1841,20 @@ _test_batched_discard()
 	$FSTRIM_PROG ${1} &>/dev/null
 }
 
+_scale_fsstress_args()
+{
+    args=""                                                                                                         
+    while [ $# -gt 0 ]; do
+        case "$1" in
+            -n) args="$args $1 $(($2 * $TIME_FACTOR))"; shift ;;
+            -p) args="$args $1 $(($2 * $LOAD_FACTOR))"; shift ;;
+            *) args="$args $1" ;;
+        esac                                                                                                    
+        shift
+    done
+    echo $args                                                                                            
+}
+  
 ################################################################################
 
 if [ "$iam" != new -a "$iam" != bench ]
