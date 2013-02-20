@@ -1,0 +1,5 @@
+QA output created by 297
+
+Run fio with random aio-dio pattern
+
+Start fallocate/truncate loop
