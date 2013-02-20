@@ -80,6 +80,7 @@ typedef enum {
 	OP_READ,
 	OP_READLINK,
 	OP_RENAME,
+	OP_REPLACE,
 	OP_RESVSP,
 	OP_RMDIR,
 	OP_SETATTR,
@@ -165,6 +166,7 @@ void	punch_f(int, long);
 void	read_f(int, long);
 void	readlink_f(int, long);
 void	rename_f(int, long);
+void	replace_f(int, long);
 void	resvsp_f(int, long);
 void	rmdir_f(int, long);
 void	setattr_f(int, long);
@@ -202,6 +204,7 @@ opdesc_t	ops[] = {
 	{ OP_READ, "read", read_f, 1, 0 },
 	{ OP_READLINK, "readlink", readlink_f, 1, 0 },
 	{ OP_RENAME, "rename", rename_f, 2, 1 },
+	{ OP_REPLACE, "replace", replace_f, 2, 1 },
 	{ OP_RESVSP, "resvsp", resvsp_f, 1, 1 },
 	{ OP_RMDIR, "rmdir", rmdir_f, 1, 1 },
 	{ OP_SETATTR, "setattr", setattr_f, 0, 1 },
@@ -2677,6 +2680,50 @@ rename_f(int opno, long r)
 	}
 	free_pathname(&newf);
 	free_pathname(&f);
+}
+
+void
+replace_f(int opno, long r)
+{
+	int		e;
+	pathname_t	src_f, dst_f;
+	fent_t		*src_fep, *dst_fep;
+	flist_t		*src_flp, *dst_flp;
+	int		v;
+	int		v1;
+
+	/* get an existing path for the source of the rename */
+	init_pathname(&src_f);
+	if (!get_fname(FT_ANYm, r, &src_f, &src_flp, &src_fep, &v)) {
+		if (v)
+			printf("%d/%d: replace - no filename\n", procid, opno);
+		free_pathname(&src_f);
+		return;
+	}
+	/* get an existing path for the destination of the rename */
+	init_pathname(&dst_f);
+	if (!get_fname(1 << (src_flp - flist), rand(), &dst_f, &dst_flp, &dst_fep, &v1)) {
+		if (v1)
+			printf("%d/%d: replace - no filename\n", procid, opno);
+		free_pathname(&dst_f);
+		return;
+	}
+	
+	v |= v1;
+	e = rename_path(&src_f, &dst_f) < 0 ? errno : 0;
+	check_cwd();
+	if (e == 0 && src_fep->id != dst_fep->id ) {
+		del_from_flist(src_flp - flist, src_fep - src_flp->fents);
+	}
+	if (v) {
+		printf("%d/%d: replace %s with %s %d\n", procid, opno, dst_f.path,
+			src_f.path, e);
+		if (e == 0 && src_fep->id != dst_fep->id)
+			printf("%d/%d: replace del entry: id=%d,parent=%d\n",
+				procid, opno, src_fep->id, src_fep->parent);
+	}
+	free_pathname(&src_f);
+	free_pathname(&dst_f);
 }
 
 void
