@@ -422,3 +422,7 @@ stress
 296 dump auto quick
 297 auto aio enospc rw stress
 298 auto aio enospc preallocrw stress
+299 aio dangerous ioctl rw stress
+300 aio dangerous ioctl rw stress
+301 aio dangerous ioctl rw stress
+302 aio dangerous ioctl rw stress
