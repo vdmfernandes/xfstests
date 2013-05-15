@@ -1,0 +1,64 @@
+QA output created by 313
+
+Stage 0: start hwflush-check server
+Allow global fail_make_request feature
+Stage 1: hwflush-check client prepare args= -t30 -b 40960 -f0 -a2
+Stage 2: hwflush-check client run args= -t30 -b 40960 -f0 -a2
+Force SCRATCH_DEV device failure
+Make SCRATCH_DEV device operable again
+Disallow global fail_make_request feature
+Stage 3: hwflush-check client check args= -t30 -b 40960 -f0 -a2
+
+Stage 0: start hwflush-check server
+Allow global fail_make_request feature
+Stage 1: hwflush-check client prepare args= -t30 -n1024 -f0 -a0
+Stage 2: hwflush-check client run args= -t30 -n1024 -f0 -a0
+Force SCRATCH_DEV device failure
+Make SCRATCH_DEV device operable again
+Disallow global fail_make_request feature
+Stage 3: hwflush-check client check args= -t30 -n1024 -f0 -a0
+
+Stage 0: start hwflush-check server
+Allow global fail_make_request feature
+Stage 1: hwflush-check client prepare args= -t30 -n1024 -f0 -a1
+Stage 2: hwflush-check client run args= -t30 -n1024 -f0 -a1
+Force SCRATCH_DEV device failure
+Make SCRATCH_DEV device operable again
+Disallow global fail_make_request feature
+Stage 3: hwflush-check client check args= -t30 -n1024 -f0 -a1
+
+Stage 0: start hwflush-check server
+Allow global fail_make_request feature
+Stage 1: hwflush-check client prepare args= -t30 -n1024 -f0 -a2
+Stage 2: hwflush-check client run args= -t30 -n1024 -f0 -a2
+Force SCRATCH_DEV device failure
+Make SCRATCH_DEV device operable again
+Disallow global fail_make_request feature
+Stage 3: hwflush-check client check args= -t30 -n1024 -f0 -a2
+
+Stage 0: start hwflush-check server
+Allow global fail_make_request feature
+Stage 1: hwflush-check client prepare args= -t30 -n1024 -f1 -a0
+Stage 2: hwflush-check client run args= -t30 -n1024 -f1 -a0
+Force SCRATCH_DEV device failure
+Make SCRATCH_DEV device operable again
+Disallow global fail_make_request feature
+Stage 3: hwflush-check client check args= -t30 -n1024 -f1 -a0
+
+Stage 0: start hwflush-check server
+Allow global fail_make_request feature
+Stage 1: hwflush-check client prepare args= -t30 -n1024 -f1 -a1
+Stage 2: hwflush-check client run args= -t30 -n1024 -f1 -a1
+Force SCRATCH_DEV device failure
+Make SCRATCH_DEV device operable again
+Disallow global fail_make_request feature
+Stage 3: hwflush-check client check args= -t30 -n1024 -f1 -a1
+
+Stage 0: start hwflush-check server
+Allow global fail_make_request feature
+Stage 1: hwflush-check client prepare args= -t30 -n1024 -f1 -a2
+Stage 2: hwflush-check client run args= -t30 -n1024 -f1 -a2
+Force SCRATCH_DEV device failure
+Make SCRATCH_DEV device operable again
+Disallow global fail_make_request feature
+Stage 3: hwflush-check client check args= -t30 -n1024 -f1 -a2

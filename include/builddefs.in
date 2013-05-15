@@ -23,6 +23,7 @@ LIBGDBM = @libgdbm@
 LIBUUID = @libuuid@
 LIBHANDLE = @libhdl@
 LIBDM = @libdm@
+LIBPTHREAD = @libpthread@
 LIBTEST = $(TOPDIR)/lib/libtest.la
 
 PKG_NAME        = @pkg_name@
